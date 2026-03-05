@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 
+    block
+    - 줄바꿈
+    - 너비와 높이 설정이 가능
+    - 기본적으로 부모 요소의 전체 너비를 차지함
+    - 여백, 패딩( margin / padding ) 설정 가능
+
+    주요 블록 태그
+    <div> : 블록 컨테이너
+    <p>   : 문단
+    <ul>, <ol> : 목록
+    <form>
+    <header>, <footer>, <aside>, <section> : 시멘틱 태그
+     -->
+    <div>첫 번째 div는 새로운 줄에서 시작됨</div>
+    <div style="background-color: gray">
+      두 번째 div는 자동으로 줄바꿈이 됨.
+    </div>
+    <div style="width: 200px; height: 50px; background-color: #ffff00">
+      너비와 높이가 지정된 div
+    </div>
+    <div style="border: 1px solid black; padding: 10px">
+      <div style="background-color: #f0f0f0; margin-bottom: 10px">
+        헤더 영역
+      </div>
+      <div style="display: flex">
+        <div style="background-color: #e0e0e0; width: 30%">사이드바</div>
+        <div style="background-color: #d0d0d0; width: 70%">
+          메인 콘텐츠 영역
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
