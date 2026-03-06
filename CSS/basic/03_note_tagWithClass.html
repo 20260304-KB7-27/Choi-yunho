@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* 
+        - 태그명.클래스명
+        - 태그명과 클래스명이 일치하는 요소에 스타일을 적용
+        */
+      li.select {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <body>와 <h1>과의 관계 : 부모 자식 -->
+    <h1 class="select">제목 글자</h1>
+    <!-- <h1>과 <ul>과의 관계 : 형제 -->
+    <ul>
+      <!-- <body>와 <li0>과의 관계 : 조상 자손 -->
+      <li class="select">사과</li>
+      <li>오렌지</li>
+      <li>바나나</li>
+      <li>감</li>
+    </ul>
+  </body>
+</html>

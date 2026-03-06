@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- 
+    자식(직계 자손) 선택자 
+    - 특정요소의 자식 요소에 스타일을 적용하는 방식 
+    -->
+    <!-- id가 header인 요소의 모든 요소에 적용 -->
+    <style>
+      #header > h1 {
+        color: red;
+      }
+
+      #section > h1 {
+        color: orange;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header">
+      <h1 class="title">Lorem ipsum</h1>
+      <div id="nav">
+        <h1>Navigation</h1>
+      </div>
+      <!-- 같은 후손이지만 더 가까이 있는 #section h1에 해당하는 스타일 적용 -->
+      <div id="section">
+        <h1 class="title">Lorem ipsum</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+    </div>
+  </body>
+</html>

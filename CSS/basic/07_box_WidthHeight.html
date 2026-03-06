@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .box {
+        margin: 20px;
+        width: 200px;
+        height: 200px;
+        padding: 20px;
+        border: 10px solid black;
+        background-color: #f0f0f0;
+      }
+
+      .content-box {
+        box-sizing: content-box; /* 기본값 */
+        background-color: #ff9999;
+      }
+
+      .border-box {
+        box-sizing: border-box; /* 대체 박스 모델 */
+        background-color: #ff9999;
+      }
+
+      .label {
+        margin-bottom: 10px;
+        font-weight: bold;
+        font-family: Arial, sans-serif;
+      }
+
+      .dimensions {
+        margin-top: 10px;
+        font-size: 14px;
+        color: #333333;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="label">content-box (기본 박스 모델):</div>
+    <div class="box content-box">
+      <div class="dimensions">
+        width: 200px<br />
+        padding: 20px<br />
+        border: 10px<br />
+        실제 너비: 260px<br />
+        (200 + 20*2 + 10*2)
+      </div>
+    </div>
+
+    <!-- 
+    직관적인 레이아웃 계산을 위해 width를 contents + padding + border을 포함한 크기로 계산함
+    box-sizing: border-box;
+    전체 크기 = width + margin
+      -->
+    <div class="label">border-box (대체 박스 모델):</div>
+    <div class="box border-box">
+      <div class="dimensions">
+        width: 200px<br />
+        padding: 20px<br />
+        border: 10px<br />
+        실제 너비: 200px<br />
+        (콘텐츠 영역: 140px)
+      </div>
+    </div>
+  </body>
+</html>

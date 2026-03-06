@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        color: red;
+      }
+
+      /* 태그 선택자 */
+      h1 {
+        color: blue;
+      }
+
+      /* 클래스 선택자 
+      -여러 클래스를 한번에 적용할 수 있다.
+      */
+      .select {
+        color: black;
+      }
+
+      /* ID 선택자 */
+      #banana {
+        color: aqua;
+      }
+
+      .item {
+        background-color: blueviolet;
+        font-style: italic;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 
+    전체 선택자(*) - 모든 요소를 선택
+    -->
+    <h1>제목</h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum quibusdam rem
+      sapiente voluptatibus earum, quaerat ipsam ea ipsa, laudantium magnam
+      perspiciatis cum vel saepe hic qui, harum ullam. Suscipit, hic!
+    </p>
+
+    <ul>
+      <li>사과</li>
+      <li id="banana" class="select item">바나나</li>
+      <li>오렌지</li>
+      <li class="select">감</li>
+    </ul>
+  </body>
+</html>
