@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/00_Source/ShopDB.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/00_Source/sqlDB.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/00_Source/world.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/01_DB_INTRO/user.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/02_SQL기본/advanced/03_SQL기본_advanced.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/02_SQL기본/basic/03_SQL기본_basic.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/02_SQL기본/lecture/00_DML.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/02_SQL기본/lecture/01_SELECT.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/02_SQL기본/lecture/02_ORDER_BY.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/02_SQL기본/lecture/03_WHERE.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/02_SQL기본/lecture/04_Keyword.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/02_SQL기본/lecture/05_GROUP_BY.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/02_SQL기본/lecture/06_SUBQUERY.sql" dialect="MySQL" />
+  </component>
+</project>

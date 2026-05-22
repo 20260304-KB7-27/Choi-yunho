@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourcePerFileMappings">
+    <file url="file://$PROJECT_DIR$/00_Source/ShopDB.sql" value="5c25dc80-4c32-4377-b3d9-7166969ca1c6" />
+    <file url="file://$PROJECT_DIR$/00_Source/sqlDB.sql" value="5c25dc80-4c32-4377-b3d9-7166969ca1c6" />
+    <file url="file://$PROJECT_DIR$/00_Source/world.sql" value="5c25dc80-4c32-4377-b3d9-7166969ca1c6" />
+    <file url="file://$PROJECT_DIR$/02_SQL기본/advanced/03_SQL기본_advanced.sql" value="5c25dc80-4c32-4377-b3d9-7166969ca1c6" />
+    <file url="file://$PROJECT_DIR$/02_SQL기본/basic/03_SQL기본_basic.sql" value="5c25dc80-4c32-4377-b3d9-7166969ca1c6" />
+    <file url="file://$PROJECT_DIR$/02_SQL기본/lecture/00_DML.sql" value="5c25dc80-4c32-4377-b3d9-7166969ca1c6" />
+    <file url="file://$PROJECT_DIR$/02_SQL기본/lecture/01_SELECT.sql" value="5c25dc80-4c32-4377-b3d9-7166969ca1c6" />
+    <file url="file://$PROJECT_DIR$/02_SQL기본/lecture/02_ORDER_BY.sql" value="5c25dc80-4c32-4377-b3d9-7166969ca1c6" />
+    <file url="file://$PROJECT_DIR$/02_SQL기본/lecture/03_WHERE.sql" value="5c25dc80-4c32-4377-b3d9-7166969ca1c6" />
+    <file url="file://$PROJECT_DIR$/02_SQL기본/lecture/04_Keyword.sql" value="5c25dc80-4c32-4377-b3d9-7166969ca1c6" />
+    <file url="file://$PROJECT_DIR$/02_SQL기본/lecture/05_GROUP_BY.sql" value="5c25dc80-4c32-4377-b3d9-7166969ca1c6" />
+    <file url="file://$PROJECT_DIR$/02_SQL기본/lecture/06_SUBQUERY.sql" value="5c25dc80-4c32-4377-b3d9-7166969ca1c6" />
+  </component>
+</project>
