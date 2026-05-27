@@ -21,5 +21,12 @@
     <file url="file://$PROJECT_DIR$/03_SQL심화/03_builtin_fuction/03_Date.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/03_SQL심화/03_builtin_fuction/04_Control.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/03_SQL심화/03_builtin_fuction/05_Cast.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/03_SQL심화/04_JOIN/01_INNER_JOIN.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/03_SQL심화/04_JOIN/02_OUTER_JOIN.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/03_SQL심화/04_JOIN/03_CROSS_JOIN.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/03_SQL심화/04_JOIN/04_SELF_JOIN.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/03_SQL심화/04_JOIN/05_UNION.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/03_SQL심화/04_JOIN/06_IN.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/03_SQL심화/basic/sqldb.sql" dialect="MySQL" />
   </component>
 </project>
