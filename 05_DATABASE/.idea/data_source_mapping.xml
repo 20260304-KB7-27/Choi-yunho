@@ -27,5 +27,14 @@
     <file url="file://$PROJECT_DIR$/03_SQL심화/04_JOIN/05_UNION.sql" value="5c25dc80-4c32-4377-b3d9-7166969ca1c6" />
     <file url="file://$PROJECT_DIR$/03_SQL심화/04_JOIN/06_IN.sql" value="5c25dc80-4c32-4377-b3d9-7166969ca1c6" />
     <file url="file://$PROJECT_DIR$/03_SQL심화/basic/sqldb.sql" value="5c25dc80-4c32-4377-b3d9-7166969ca1c6" />
+    <file url="file://$PROJECT_DIR$/04_TABLE_VIEW/advanced/table_adv.sql" value="5c25dc80-4c32-4377-b3d9-7166969ca1c6" />
+    <file url="file://$PROJECT_DIR$/04_TABLE_VIEW/basic/01_ddl.sql" value="5c25dc80-4c32-4377-b3d9-7166969ca1c6" />
+    <file url="file://$PROJECT_DIR$/04_TABLE_VIEW/basic/02_dml.sql" value="5c25dc80-4c32-4377-b3d9-7166969ca1c6" />
+    <file url="file://$PROJECT_DIR$/04_TABLE_VIEW/basic/03_ddl.sql" value="5c25dc80-4c32-4377-b3d9-7166969ca1c6" />
+    <file url="file://$PROJECT_DIR$/04_TABLE_VIEW/basic/04_view.sql" value="5c25dc80-4c32-4377-b3d9-7166969ca1c6" />
+    <file url="file://$PROJECT_DIR$/05_INDEX/lecture/01_index.sql" value="5c25dc80-4c32-4377-b3d9-7166969ca1c6" />
+    <file url="file://$PROJECT_DIR$/05_INDEX/lecture/02_index_employee.sql" value="5c25dc80-4c32-4377-b3d9-7166969ca1c6" />
+    <file url="file://$PROJECT_DIR$/05_INDEX/lecture/03_transaction.sql" value="5c25dc80-4c32-4377-b3d9-7166969ca1c6" />
+    <file url="file://$PROJECT_DIR$/05_INDEX/lecture/04_USER.sql" value="5c25dc80-4c32-4377-b3d9-7166969ca1c6" />
   </component>
 </project>

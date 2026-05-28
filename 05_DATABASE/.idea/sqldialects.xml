@@ -28,5 +28,14 @@
     <file url="file://$PROJECT_DIR$/03_SQL심화/04_JOIN/05_UNION.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/03_SQL심화/04_JOIN/06_IN.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/03_SQL심화/basic/sqldb.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/04_TABLE_VIEW/advanced/table_adv.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/04_TABLE_VIEW/basic/01_ddl.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/04_TABLE_VIEW/basic/02_dml.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/04_TABLE_VIEW/basic/03_ddl.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/04_TABLE_VIEW/basic/04_view.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/05_INDEX/lecture/01_index.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/05_INDEX/lecture/02_index_employee.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/05_INDEX/lecture/03_transaction.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/05_INDEX/lecture/04_USER.sql" dialect="MySQL" />
   </component>
 </project>
