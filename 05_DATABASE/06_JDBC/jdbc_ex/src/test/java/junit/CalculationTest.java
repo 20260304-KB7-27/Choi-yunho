@@ -2,6 +2,7 @@ package junit;
 
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CalculationTest {
@@ -20,6 +21,14 @@ class CalculationTest {
 
     @Test
     void assertJExample() {
+        String text = "Hello, AssertJ";
+
+        // 문자열
+        assertThat(text)
+                .isNotEmpty()
+                .startsWith("Hello")
+                .endsWith("J")
+                .contains(",");
 
     }
 }
