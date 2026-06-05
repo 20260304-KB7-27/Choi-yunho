@@ -1,0 +1,28 @@
+<configuration>
+    <!--
+    @SLF4J(Simple Logging Facade for Java)
+    -->
+    <!-- appender : 로깅 정보를 다루기 위한 (Console은 터미널에 로그 출력)-->
+    <appender name="CONSOLE"
+              class="ch.qos.logback.core.ConsoleAppender">
+
+        <encoder>
+            <pattern>
+                %n⭐경과 시간 : %-4relative
+                ⭐스레드 정보 : [%thread]
+                ⭐로그 레벨 : %-5level
+                ⭐로그 이름 : %logger{30}
+                ⭐로그 메세지 : %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <!--
+    특정 패키지의 로그 레벨 설정
+    -->
+    <logger name="org.mongodb.driver.connection" level="INFO" additivity="true"/>
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+    </root>
+</configuration>

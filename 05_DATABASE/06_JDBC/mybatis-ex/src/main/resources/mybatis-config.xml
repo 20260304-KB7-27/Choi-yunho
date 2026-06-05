@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+XML(Extensible Markup Language)
+- 데이터를 구조화해서 저장하고 전달하기 위한 마크업 언어
+-->
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<!--
+태그 작성 순서
+properties -> setting -> typealias -> environments -> mappers
+-->
+<configuration>
+    <!--
+    configuration
+    - 외부 설정파일 읽어오기
+    -->
+    <properties resource="application.properties" />
+
+    <settings>
+        <setting name="cacheEnabled" value="false" />
+        <!-- 칼럼(DB)명을 필드명(Java)에 맞춰서 자동 변환 -->
+        <setting name="mapUnderscoreToCamelCase" value="true" />
+        <!-- insert 시에 생성되는 (auto_increament) PK 값을 객체에 채울지 여부 -->
+        <setting name="useGeneratedKeys" value="false" />
+    </settings>
+
+    <!--
+    DB 연결 환경 설정
+    -->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC" />
+
+            <!-- 커넥션 풀 사용 -->
+            <dataSource type="POOLED">
+                <property name="driver"   value="${driver}" />
+                <property name="url"      value="${url}" />
+                <property name="username" value="${username}" />
+                <property name="password" value="${password}" />
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--
+    SQL Mapper XML 파일 등록
+    -->
+    <mappers>
+        <mapper resource="mapper/travel-mapper.xml"/>
+        <!-- 새로운 Mapper 파일을 만들면 여기에 등록 필요 -->
+    </mappers>
+</configuration>
