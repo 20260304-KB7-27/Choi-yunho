@@ -1,15 +1,9 @@
 package org.scoula.dynamicweb;
 
 import java.io.*;
-
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
-/*
-* @WebServlet
-* - 현재 클래스를 Servlet으로 등록하는 어노테이션
-* - web.xml에 직접 등록하는 설정을 대체함.
-* */
 @WebServlet(name = "helloServlet", value = "/hello-servlet")
 public class HelloServlet extends HttpServlet {
     private String message;
