@@ -6,15 +6,14 @@ import javax.servlet.annotation.WebServlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet("/login")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/sports")
+public class SportsServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         request.setCharacterEncoding("UTF-8");
 
-        String userid = request.getParameter("userid");
-        String passwd = request.getParameter("passwd");
+        String[] sports = request.getParameterValues("sports");
+        String sex = request.getParameter("sex");
 
         //MIME 타입 설정
         response.setContentType("text/html; charset=UTF-8");
@@ -24,9 +23,12 @@ public class LoginServlet extends HttpServlet {
 
         // html 작성
         out.println("<html><body>");
-        out.println("<h2>로그인 정보</h2>");
-        out.println("<p>아이디: " + userid + "</p>");
-        out.println("<p>비밀번호: " + passwd + "</p>");
+        if (sports != null) {
+            for (String sport : sports) {
+                out.println("좋아하는 운동: " + sport + "<br>");
+            }
+        }
+        out.println("성별 : " + sex);
         out.println("</body></html>");
     }
 }
