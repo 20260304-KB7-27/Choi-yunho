@@ -1,4 +1,4 @@
-package org.example.ex05.domain;
+package org.example.ex05;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
