@@ -2,9 +2,12 @@
 ---
 ## REPOSITORY FOR STUDYING
 
-- HTML, CSS
-- JavaScript
-- Vue
-- Java
-- Database
-- **Spring**
+### FrontEnd
+  - HTML, CSS
+  - JavaScript
+  - Vue
+
+### BackEnd
+  - Java
+  - Database
+  - **Spring**
