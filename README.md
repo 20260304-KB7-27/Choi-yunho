@@ -6,3 +6,5 @@
 - JavaScript
 - Vue
 - Java
+- Database
+- **Spring**
