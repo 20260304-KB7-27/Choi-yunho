@@ -1,0 +1,14 @@
+### ex01 객체 전달 예제
+GET http://localhost:8080/json/ex01
+
+### ex01 객체 전달 예제
+POST http://localhost:8080/json/ex01
+Content-Type: application/json
+
+{
+  "id" : "user",
+  "password" : "1234"
+}
+
+### ResponseEntity 사용
+GET http://localhost:8080/json/ex03
