@@ -17,7 +17,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @PropertySource("classpath:/application.properties")
-@MapperScan(basePackages = {"org.scoula.mapper"})
+@MapperScan(basePackages = {"org.scoula.example.mapper"})
 public class RootConfig {
 
     @Value("${jdbc.driver}")
@@ -37,9 +37,9 @@ public class RootConfig {
 
 
     /*
-     * SQL SessionFactory 빈 드록
-     * - Mybatis 팩토리 객체를 스프링 컨테이너에 등록
-     * */
+    * SQL SessionFactory 빈 드록
+    * - Mybatis 팩토리 객체를 스프링 컨테이너에 등록
+    * */
     @Bean
     public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
         SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean();
@@ -54,9 +54,9 @@ public class RootConfig {
     }
 
     /*
-     * 트랜젝션 매니저
-     * - Spring에서 DB 트랜젝션을 관리하기 위해서
-     * */
+    * 트랜젝션 매니저
+    * - Spring에서 DB 트랜젝션을 관리하기 위해서
+    * */
     @Bean
     public DataSourceTransactionManager transactionManager() {
         DataSourceTransactionManager manager = new DataSourceTransactionManager(dataSource());
@@ -64,8 +64,8 @@ public class RootConfig {
     }
 
     /*
-     * HicariCP 커넥션 풀을 사용한 DataSource 빈 생성
-     * */
+    * HicariCP 커넥션 풀을 사용한 DataSource 빈 생성
+    * */
     @Bean
     public DataSource dataSource() {
 
