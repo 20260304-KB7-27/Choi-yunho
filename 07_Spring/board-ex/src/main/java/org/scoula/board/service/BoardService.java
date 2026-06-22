@@ -19,6 +19,6 @@ public interface BoardService {
    public boolean update(BoardDTO board);
 
     // 게시글 삭제
-    public boolean delete(BoardDTO board);
+    public boolean delete(Long no);
 
 }
