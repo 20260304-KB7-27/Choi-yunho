@@ -1,0 +1,18 @@
+@baseUrl = http://localhost:8080/api/board
+@testUrl = http://localhost:8080/test/board
+
+### 기존 - 성공
+GET {{baseUrl}}/1
+Accept: application/json
+
+### 기존 - 실패
+GET {{baseUrl}}/99
+Accept: application/json
+
+### 공통응답 - 성공
+GET {{testUrl}}/1
+Accept: application/json
+
+### 공통응답 - 실패
+GET {{testUrl}}/99
+Accept: application/json
