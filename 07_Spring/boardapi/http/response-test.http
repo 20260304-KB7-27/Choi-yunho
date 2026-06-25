@@ -16,3 +16,10 @@ Accept: application/json
 ### 공통응답 - 실패
 GET {{testUrl}}/99
 Accept: application/json
+
+
+
+GET https://api.openweathermap.org/data/2.5/weather?q=seoul&units=metric&APPID=1be3643c544d5c3082671ccdaa4eec4f&lang=kr
+
+###
+GET https://openweathermap.org/img/w/01d.png

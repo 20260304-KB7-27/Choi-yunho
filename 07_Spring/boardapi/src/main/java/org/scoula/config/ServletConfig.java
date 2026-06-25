@@ -17,6 +17,7 @@ import org.springframework.web.servlet.view.JstlView;
         "org.scoula.exception",
         "org.scoula.controller",
         "org.scoula.board.controller",
+        "org.scoula.weather.controller"
 })
 public class ServletConfig implements WebMvcConfigurer {
 
