@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>CORS 테스트 (Vue)</title>
+</head>
+<body>
+  <div id="app">
+    <h2>Spring /member API CORS 테스트</h2>
+
+    <p>
+      API 주소:
+      <input v-model="url" size="40" />
+      <button @click="callApi" :disabled="loading">호출</button>
+    </p>
+
+    <p>현재 페이지 origin: <b>{{ origin }}</b></p>
+
+    <div v-if="loading">요청 중...</div>
+
+    <div v-if="result !== null">
+      <h3>✅ 응답 성공</h3>
+      <pre>{{ result }}</pre>
+    </div>
+
+    <div v-if="error">
+      <h3>❌ 요청 실패 (CORS 가능성)</h3>
+      <pre>{{ error }}</pre>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <script>
+    const { createApp, ref } = Vue;
+
+    createApp({
+      setup() {
+        const url = ref("http://localhost:8080/member");
+        const origin = ref(window.location.origin || "file:// (로컬 파일)");
+        const result = ref(null);
+        const error = ref("");
+        const loading = ref(false);
+
+        async function callApi() {
+          loading.value = true;
+          result.value = null;
+          error.value = "";
+          try {
+            const res = await fetch(url.value);
+            if (!res.ok) throw new Error("HTTP " + res.status);
+            result.value = await res.text();
+          } catch (e) {
+            error.value = e.name + ": " + e.message;
+          } finally {
+            loading.value = false;
+          }
+        }
+
+        return { url, origin, result, error, loading, callApi };
+      },
+    }).mount("#app");
+  </script>
+</body>
+</html>

@@ -3,16 +3,22 @@ package org.scoula.security.config;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.mybatis.spring.annotation.MapperScan;
+import org.scoula.security.filter.JwtUsernamePasswordAuthenticationFilter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.csrf.CsrfFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
@@ -31,6 +37,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final UserDetailsService userDetailsService;
 
+    @Autowired
+    private JwtUsernamePasswordAuthenticationFilter jwtUsernamePasswordAuthenticationFilter;
+
     public CharacterEncodingFilter encodingFilter() {
         CharacterEncodingFilter encodingFilter = new CharacterEncodingFilter();
         encodingFilter.setEncoding("UTF-8");
@@ -43,8 +52,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     // 시큐리티 세팅할 공간
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
         // CSRF 필터 앞에 encodingFilter을 놓겠다
-        http.addFilterBefore(encodingFilter(), CsrfFilter.class);
+        http.addFilterBefore(encodingFilter(), CsrfFilter.class)
+                .addFilterBefore(jwtUsernamePasswordAuthenticationFilter,
+                        UsernamePasswordAuthenticationFilter.class);
+
+        // CORS 설정 추가
+        http.cors();
+
+        http.httpBasic().disable() // 기본 HTTP 인증 비활성화
+                .csrf().disable() // CSRF 비활성화
+                .formLogin().disable() // formlogin 비활성화
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS); // 세션 생성 안함
+
         // URL별 접근 권한 설정
         http.authorizeRequests()
                 .antMatchers("/security/alle")
@@ -54,23 +75,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/security/member")
                 .access("hasAnyRole('ROLE_ADMIN', 'ROLE_MEMBER')");
 
-        http.cors();
-        // form 기반 로그인 활성화
-        http.formLogin()
-                .loginPage("/security/login") // 로그인 페이지 커스텀
-                .loginProcessingUrl("/security/login") // 스프링 기본제공 post 요청시 로그인 시도
-                .defaultSuccessUrl("/");
-
-        http.logout()
-                .logoutUrl("/security/logout") // POST 요청을보내면 로그아웃 시도
-                .invalidateHttpSession(true)
-                .deleteCookies("JSESSION-ID") // 삭제할 쿠키
-                .logoutSuccessUrl("/security/logout"); // 로그아웃 성공 시 이동할 페이지
-
-        http.sessionManagement()
-                .maximumSessions(1) // 동시 세션 수 제한
-                .maxSessionsPreventsLogin(true)
-                .expiredUrl("/security/login?expired");
     }
 
     // 테스트용으로 메모리 상에 사용자 정보 등록
@@ -92,6 +96,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth
                 .userDetailsService(userDetailsService)
                 .passwordEncoder(passwordEncoder()); // userDetailService
+    }
+
+    // 커스텀 하기 위한 Authentication 객체를 빈으로 등록
+    @Bean
+    public AuthenticationManager authenticationManager() throws Exception {
+        return super.authenticationManager();
+    }
+
+    // 인증인가 제외 URL
+    // - 보안검사가 필요없는 정적 리소스나 특정 API는 Security Filter를 거치지 않게 함
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring()
+                .antMatchers(
+                        "/assets/**",
+                        "/*", // 루트 경로 바로 아래 /login, /member
+                        "/api/member/**" // /api/member 하위 경로 제외
+                );
     }
 
     @Bean
