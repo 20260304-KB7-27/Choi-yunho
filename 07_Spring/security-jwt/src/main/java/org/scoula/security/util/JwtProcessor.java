@@ -18,7 +18,7 @@ import java.util.Date;
 public class JwtProcessor {
 
     // 만료시간
-    static private final long TOKEN_VALID_MILLISECOND = 1000L * 60 * 5; // 5분
+    static private final long TOKEN_VALID_MILLISECOND = 1000L * 60 * 10; // 5분
 
     // 서명용 키
     private final Key key;

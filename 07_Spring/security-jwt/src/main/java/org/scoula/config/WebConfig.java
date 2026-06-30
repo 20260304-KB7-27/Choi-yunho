@@ -1,5 +1,6 @@
 package org.scoula.config;
 
+import io.swagger.models.Swagger;
 import org.scoula.security.config.SecurityConfig;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
@@ -22,12 +23,24 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class[]{ServletConfig.class};
+        return new Class[]{
+                ServletConfig.class,
+                SwaggerConfig.class};
     }
 
+    /*
+     * DispatcherServelt이 처리할 URL 패턴 목록
+     * */
     @Override
     protected String[] getServletMappings() {
-        return new String[]{"/"};
+
+        return new String[] {
+                "/",
+                "/swagger-ui.html",       // Swagger UI 진입점
+                "/swagger-resources/**",  // Swagger 내부 리소스 요청
+                "/v2/api-docs",           // JSON 형태 API 명세 요청
+                "/webjars/**"             // Swagger UI JS/CSS 등 정적 자원
+        };
     }
 
     @Override
