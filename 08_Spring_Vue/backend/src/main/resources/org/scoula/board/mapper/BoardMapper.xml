@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.scoula.board.mapper.BoardMapper">
+    <!--    <insert id="create" parameterType="BoardVO" useGeneratedKeys="true" keyProperty="no">-->
+    <insert id="create">
+        insert into tbl_board_ex(title, content, writer)
+        values (#{title}, #{content}, #{writer})
+
+        <selectKey resultType="Long" keyProperty="no" keyColumn="no" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+    <!-- 첨부파일 저장 -->
+    <insert id="createAttachment">
+        INSERT INTO tbl_board_attachment_ex(filename, path, content_type, size, bno)
+        VALUES (#{filename}, #{path}, #{contentType}, #{size}, #{bno})
+    </insert>
+
+    <select id="getList"
+            resultType="org.scoula.board.domain.BoardVO">
+        SELECT *
+        FROM tbl_board_ex
+        ORDER BY NO DESC
+    </select>
+
+    <!--    get V1-->
+    <!--    <select id="get"-->
+    <!--            parameterType="long"-->
+    <!--            resultType="BoardVO">-->
+    <!--        SELECT *-->
+    <!--        FROM tbl_board_ex-->
+    <!--        WHERE NO = #{no}-->
+    <!--    </select>-->
+
+    <!--    get V2-->
+    <select id="get" resultMap="boardMap">
+        SELECT b.*,
+               a.no       AS ano,
+               a.bno,
+               a.filename,
+               a.path,
+               a.content_type,
+               a.size,
+               a.reg_date AS a_reg_date
+        FROM tbl_board_ex b
+                 LEFT OUTER JOIN tbl_board_attachment_ex a
+                                 ON b.no = a.bno
+        WHERE b.no = #{no}
+        ORDER BY filename
+    </select>
+
+<!--    첨부파일 단건조회 -->
+    <select id="getAttachment" resultType="org.scoula.board.domain.BoardAttachmentVO">
+        SELECT * FROM tbl_board_attachment_ex
+        WHERE no = #{no}
+    </select>
+    <!--
+    ResultMap
+    - DB 쿼리 결과의 칼럼과 자바 객체의 필드와 매핑
+    - 일반적인 경우 (Camel <-> Snake) 변환 정도일 경우에는 MyBatis가 자동으로 매핑 해주지만,
+    - Join과 같이 특수한 경우에는 직접 매핑이 필요함 (ResultMap)
+    -->
+    <resultMap id="boardMap" type="org.scoula.board.domain.BoardVO">
+
+<!--        id : 기본키 매핑 태그 - MyBatis 객체의 통일성을 판단하고 캐싱/그룹핑할 때 사용-->
+        <id column="no" property="no"/>
+        <result column="title"       property="title"/>
+        <result column="content"     property="content"/>
+        <result column="writer"      property="writer"/>
+        <result column="reg_date"    property="regDate"/>
+        <result column="update_date" property="updateDate"/>
+
+        <!--
+        collection : 1:N 관계 매핑
+        - 조인결과를 한번에 중첩 객체 형태로 만들어줌 (BoardVO 안의 BoardAttachmentVO 형태)
+        -->
+        <collection property="attaches" resultMap="attachmentMap" />
+    </resultMap>
+    <resultMap id="attachmentMap" type="org.scoula.board.domain.BoardAttachmentVO">
+        <id column="ano" 				property="no"/>
+        <result column="bno"   			property="bno"/>
+        <result column="filename"		property="filename"/>
+        <result column="path"			property="path"/>
+        <result column="contentType"	property="contentType"/>
+        <result column="size"       	property="size"/>
+        <result column="a_reg_date" 	property="regDate"/>
+    </resultMap>
+
+    <update id="update">
+        UPDATE tbl_board_ex
+        SET title       = #{title},
+            content     = #{content},
+            writer      = #{writer},
+            update_date = now()
+        WHERE NO = #{no}
+    </update>
+
+    <delete id="delete">
+        DELETE
+        FROM tbl_board_ex
+        WHERE NO = #{no}
+    </delete>
+</mapper>
