@@ -1,0 +1,1 @@
+import{n as e,r as t,t as n}from"./index-Cjyw8muk.js";var r={};function i(n,r){return t(),e(`h1`,null,`비밀번호 변경 페이지`)}var a=n(r,[[`render`,i]]);export{a as default};
