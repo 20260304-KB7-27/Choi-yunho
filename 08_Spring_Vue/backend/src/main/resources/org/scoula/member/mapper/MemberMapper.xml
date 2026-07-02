@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.scoula.member.mapper.MemberMapper">
+
+    <!-- username 중복 조회 용도-->
+    <select id="findByUsername" resultType="org.scoula.security.account.domain.MemberVO">
+        select * from tbl_member where username = #{username}
+    </select>
+    <!-- 단건(상세) 조회-->
+    <resultMap id="authMap" type="org.scoula.security.account.domain.AuthVO">
+        <result property="username" column="username"/>
+        <result property="auth" column="auth"/>
+    </resultMap>
+
+    <resultMap id="memberMap" type="org.scoula.security.account.domain.MemberVO">
+        <id property="username" column="username"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <result property="email" column="email"/>
+        <result property="regDate" column="reg_date"/>
+        <result property="updateDate" column="update_date"/>
+        <collection property="authList" resultMap="authMap"/>
+    </resultMap>
+
+    <select id="get" resultMap="memberMap">
+        select m.username, password, email, reg_date, update_date, auth
+        from tbl_member m
+        left outer join tbl_member_auth a
+        on m.username = a.username
+        where m.username = #{username}
+    </select>
+<!--    회원 정보 저장 -->
+    <insert id="insert">
+        insert into tbl_member
+        values(#{username}, #{password}, #{email}, now(), now())
+    </insert>
+<!--    권한 정보 저장 -->
+    <insert id="insertAuth">
+        insert into tbl_member_auth(username, auth)
+        values(#{username}, #{auth})
+    </insert>
+</mapper>
