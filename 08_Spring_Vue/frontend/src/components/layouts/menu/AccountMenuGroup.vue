@@ -1,19 +1,23 @@
 <!-- 계정 메뉴 그룹 컴포넌트 -->
 <script setup>
-import { computed } from "vue";
-import MenuItem from "./MenuItem.vue";
-import AccountMenuItem from "./AccountMenuItem.vue";
-import LogoutMenuItem from "./LogoutMenuItem.vue";
-import config from "@/config";        // 폴더를 import 하면 index.js를 가져옴
+import { computed } from 'vue';
+import MenuItem from './MenuItem.vue';
+import AccountMenuItem from './AccountMenuItem.vue';
+import LogoutMenuItem from './LogoutMenuItem.vue';
+import config from '@/config'; // 폴더를 import 하면 index.js를 가져옴
+import { useAuthStore } from '@/stores/auth.js';
 
+const auth = useAuthStore();
 const { login, join } = config.accountMenus;
 
 const islogin = computed(() => {
-  false;
+  // true;
+  return auth.isLogin;
 });
 
 const username = computed(() => {
-  return "null";
+  // return "null";
+  return auth.username;
 });
 </script>
 

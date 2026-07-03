@@ -8,7 +8,7 @@ export default {
   // 중복 체크
   async checkUsername(username) {
     const { data } = await api.get(`${BASE_URL}/checkusername/${username}`);
-    console.log(`☺️ AUTH GET CHECKUSERNAME : `, data);
+    console.log(`🥞AUTH GET CHECKUSERNAME : `, data);
     return data;
   },
 
@@ -26,7 +26,7 @@ export default {
     }
 
     const { data } = await api.post(BASE_URL, formdata, headers);
-    console.log(`☺️ AUTH POST : `, data);
+    console.log(`🥞 AUTH POST : `, data);
 
     return data;
   },

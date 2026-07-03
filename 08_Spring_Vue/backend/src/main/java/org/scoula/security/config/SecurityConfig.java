@@ -87,8 +87,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         // URL별 접근 권한 설정
         http.authorizeRequests()
-                .anyRequest().permitAll();
-
+//                .anyRequest().permitAll();
+                .anyRequest().authenticated();
     }
 
     // 테스트용으로 메모리 상에 사용자 정보 등록
