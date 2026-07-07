@@ -4,12 +4,12 @@ package org.scoula.utils;
 public class UploadFileName {
     public static String getUniqueName(String filename) {
 
-        // image1.png -> image-현재시간(밀리초).png
+        // image1.png -> image1-현재시간(밀리초).png
         // 확장자 위치(index) 찾기용
         int ix = filename.lastIndexOf(".");
 
         String name = filename.substring(0, ix); // 파일명 추출
-        String ext = filename.substring(ix); // 확장자 명
+        String ext = filename.substring(ix+1); // 확장자명
 
         return String.format("%s-%d.%s", name, System.currentTimeMillis(), ext);
     }

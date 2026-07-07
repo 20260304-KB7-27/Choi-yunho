@@ -4,17 +4,15 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.scoula.security.account.domain.AuthVO;
 import org.scoula.security.account.domain.MemberVO;
-import org.scoula.security.account.dto.UserInfoDTO;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
 import java.util.List;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class MemberDTO {
 
@@ -23,7 +21,7 @@ public class MemberDTO {
     private Date regDate;
     private Date updateDate;
 
-    private MultipartFile avatar; // -> DB에 저장안하고 파일시스템으로 관리
+    private MultipartFile avatar; // -> db 저장안하고 파일시스템으로 관리
 
     private List<String> authList;
 
@@ -35,7 +33,6 @@ public class MemberDTO {
                 .updateDate(m.getUpdateDate())
                 .authList(m.getAuthList().stream().map(a -> a.getAuth()).toList())
                 .build();
-
     }
 
     public MemberVO toVO() {
@@ -48,3 +45,15 @@ public class MemberDTO {
 
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+

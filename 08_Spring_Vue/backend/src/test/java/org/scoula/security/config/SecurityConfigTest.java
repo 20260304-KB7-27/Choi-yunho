@@ -12,12 +12,16 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = {RootConfig.class, SecurityConfig.class})
+@ContextConfiguration(classes = {
+        RootConfig.class,
+        SecurityConfig.class
+})
 @Log4j2
 class SecurityConfigTest {
 
     @Autowired
     private PasswordEncoder pwEncoder;
+
     @Test
     void passwordEncoder() {
         String str = "1234";
@@ -25,9 +29,9 @@ class SecurityConfigTest {
         String enStr = pwEncoder.encode(str);
         String enStr2 = pwEncoder.encode(str);
 
-        log.info("암호화된 pw : {}", enStr);
-        log.info("암호화된 pw2 : {}", enStr2);
+        log.info("암호화된 password : {}", enStr);
+        log.info("암호화된 password2 : {}", enStr2);
 
-        log.info("match : {} " , pwEncoder.matches(str, enStr));
+        log.info("match : {}", pwEncoder.matches(str, enStr));
     }
 }

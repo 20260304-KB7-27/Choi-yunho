@@ -6,7 +6,7 @@
 </template>
 
 <script setup>
-import MenuItem from "./MenuItem.vue";
+import MenuItem from './MenuItem.vue';
 const props = defineProps({
   menus: { type: Array, required: true },
 });

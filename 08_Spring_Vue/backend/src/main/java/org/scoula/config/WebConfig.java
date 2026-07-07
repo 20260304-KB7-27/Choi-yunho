@@ -1,7 +1,7 @@
 package org.scoula.config;
 
-import io.swagger.models.Swagger;
 import org.scoula.security.config.SecurityConfig;
+import org.scoula.utils.UploadFiles;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
@@ -11,7 +11,7 @@ import javax.servlet.ServletRegistration;
 
 public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitializer {
 
-    final String LOCATION = "/Users/youknow/Desktop/Projects";
+    final String LOCATION = UploadFiles.BASE_DIR;
     final long MAX_FILE_SIZE = 1024 * 1024 * 10L;
     final long MAX_REQUEST_SIZE = 1024 * 1024 * 10L;
     final int FILE_SIZE_THRESHOLD = 1024 * 1024 * 5;
@@ -45,10 +45,8 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
 
     @Override
     protected Filter[] getServletFilters() {
-        CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
-        characterEncodingFilter.setEncoding("UTF-8");
-        characterEncodingFilter.setForceEncoding(true);
-        return new Filter[]{characterEncodingFilter};
+        // UTF-8 문자 인코딩 필터는 SecurityInitializer에서 처리됨
+        return new Filter[]{};
     }
 
     @Override

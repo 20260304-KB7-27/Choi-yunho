@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.Writer;
 
-// 응답을 일관되게 보내기 위한 유틸 (Security, 필터 예외 핸들러에서 사용)
+// 응답을 일관되게 보내기 위한 유틸 ( Security, 필터 예외 핸들러에서 사용)
 public class JsonResponse {
 
     // 제네릭을 사용한 JSON 응답 처리

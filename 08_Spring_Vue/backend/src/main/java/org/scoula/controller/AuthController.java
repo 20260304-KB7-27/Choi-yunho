@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-// Swagger에 Security Login 요청 문서를 만들기 위한 컨트롤러
+// Swagger 에 Security Login 요청 문서를 만들기위한 컨트롤러
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {

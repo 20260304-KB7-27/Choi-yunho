@@ -11,11 +11,11 @@ const instance = axios.create({
 instance.interceptors.response.use(
   (response) => {
     if (response.status == 200) {
-      console.log('✅ 응답 정상 : ', response.config.url);
+      console.log('🍟응답 정상 : ', response.config.url);
       return response;
     }
     if (response.status == 404) {
-      return Promise.reject('❌ 페이지 없음 : ' + response.config.url);
+      return Promise.reject('🍟페이지 없음 : ' + response.config.url);
     }
     return response;
   },
@@ -24,6 +24,7 @@ instance.interceptors.response.use(
     if (error.response?.status === 401) {
       console.log('인증 실패 (401) - 토큰이 유효하지 않음');
       const { logout } = useAuthStore();
+
       logout(); // 기존토큰 지워버리기
 
       router.push('/auth/login'); // 로그인 페이지로 이동

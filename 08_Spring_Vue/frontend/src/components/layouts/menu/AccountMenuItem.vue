@@ -1,6 +1,7 @@
 <!-- 계정 메뉴 아이템 컴포넌트 -->
 <script setup>
 const props = defineProps({ username: String });
+
 const displayImageUrl = `/api/member/${props.username}/avatar`;
 </script>
 

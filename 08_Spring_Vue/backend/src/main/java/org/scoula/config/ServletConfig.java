@@ -15,11 +15,11 @@ import org.springframework.web.servlet.view.JstlView;
         "org.scoula.controller",
         "org.scoula.exception",
         "org.scoula.board.controller",
-        "org.scoula.member.controller"
+        "org.scoula.member.controller",
 })
 public class ServletConfig implements WebMvcConfigurer {
 
-    // Vue 정적파일로 핸들링할 설정
+    // Vue  정적파일로 핸들링할 설정
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/")
@@ -40,11 +40,10 @@ public class ServletConfig implements WebMvcConfigurer {
         registry.addResourceHandler("/v2/api-docs")
                 .addResourceLocations("classpath:/META-INF/resources/");
 
-        // Vue 정적 파일들
+        // vue 정적파일들
         registry.addResourceHandler("/assets/**")
                 .addResourceLocations("/resources/assets/");
     }
-
 
     @Bean
     public MultipartResolver multipartResolver() {

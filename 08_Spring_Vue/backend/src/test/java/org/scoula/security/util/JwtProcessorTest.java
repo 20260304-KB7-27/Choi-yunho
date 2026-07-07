@@ -1,6 +1,5 @@
 package org.scoula.security.util;
 
-import com.mysql.cj.exceptions.CJPacketTooBigException;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

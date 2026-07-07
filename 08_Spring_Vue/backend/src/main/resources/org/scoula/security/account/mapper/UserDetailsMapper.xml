@@ -3,12 +3,11 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<!-- namespace는 반드시 경로 + 인터페이스 패키지명과 일치해야함-->
 <mapper namespace="org.scoula.security.account.mapper.UserDetailsMapper">
 
     <resultMap id="authMap" type="org.scoula.security.account.domain.AuthVO">
-        <result property="username" column="username" />
-        <result property="auth" column="auth" />
+        <result property="username" column="username"/>
+        <result property="auth" column="auth"/>
     </resultMap>
 
     <resultMap id="memberMap" type="org.scoula.security.account.domain.MemberVO">
@@ -28,11 +27,4 @@
         on m.username = a.username
         where m.username = #{username}
     </select>
-
 </mapper>
-
-        <!--<mapper namespace="연결하고 싶은 인터페이스 경로 + 이름">-->
-        <!--    <select id="추상 메서드 이름" resultType="반환타입">-->
-        <!--        SQL-->
-        <!--    </select>-->
-        <!--</mapper>-->

@@ -4,12 +4,6 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="org.scoula.member.mapper.MemberMapper">
-
-    <!-- username 중복 조회 용도-->
-    <select id="findByUsername" resultType="org.scoula.security.account.domain.MemberVO">
-        select * from tbl_member where username = #{username}
-    </select>
-    <!-- 단건(상세) 조회-->
     <resultMap id="authMap" type="org.scoula.security.account.domain.AuthVO">
         <result property="username" column="username"/>
         <result property="auth" column="auth"/>
@@ -25,6 +19,42 @@
         <collection property="authList" resultMap="authMap"/>
     </resultMap>
 
+    <!--회원정보 저장-->
+    <insert id="insert">
+        insert into tbl_member
+        values(#{username}, #{password}, #{email}, now(),now())
+    </insert>
+
+    <!--권한정보 저장-->
+    <insert id="insertAuth">
+        insert into tbl_member_auth(username, auth)
+        values(#{username}, #{auth})
+    </insert>
+
+    <!--회원 정보 업데이트-->
+    <update id="update">
+        UPDATE tbl_member
+        SET
+        email = #{email},
+        update_date = now()
+        WHERE username =#{username}
+    </update>
+
+    <!-- 패스워드 업데이트 -->
+    <update id="updatePassword">
+        UPDATE tbl_member
+        SET
+        password = #{newPassword},
+        update_date = now()
+        WHERE username =#{username}
+    </update>
+
+    <!--username 중복조회용도-->
+    <select id="findByUsername" resultType="org.scoula.security.account.domain.MemberVO">
+        select * from tbl_member where username = #{username}
+    </select>
+
+    <!--단건(상세)조회-->
     <select id="get" resultMap="memberMap">
         select m.username, password, email, reg_date, update_date, auth
         from tbl_member m
@@ -32,14 +62,4 @@
         on m.username = a.username
         where m.username = #{username}
     </select>
-<!--    회원 정보 저장 -->
-    <insert id="insert">
-        insert into tbl_member
-        values(#{username}, #{password}, #{email}, now(), now())
-    </insert>
-<!--    권한 정보 저장 -->
-    <insert id="insertAuth">
-        insert into tbl_member_auth(username, auth)
-        values(#{username}, #{auth})
-    </insert>
 </mapper>

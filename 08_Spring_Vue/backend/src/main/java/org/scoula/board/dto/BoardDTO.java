@@ -25,10 +25,10 @@ public class BoardDTO {
     private Date regDate;
     private Date updateDate;
 
-    // db에 실제로
-    private List<BoardAttachmentVO> attaches;
+    // db에 저장된 파일 내용
+    private List <BoardAttachmentVO> attaches;
 
-    // 실제 업로드 파일 (MultipartFile) 목록 (클라이언트에서 전달받을)
+    // 실제 업로드 파일(MultipartFile) 목록 (클라이언트에서 전달받을)
     List<MultipartFile> files = new ArrayList<>();
 
     // VO  DTO 변환
@@ -54,7 +54,7 @@ public class BoardDTO {
                     .writer(writer)
                     .regDate(regDate)
                     .updateDate(updateDate)
-                    .attaches(attaches)  // 추가
+                    .attaches(attaches) //추가
                     .build();
         }
     }

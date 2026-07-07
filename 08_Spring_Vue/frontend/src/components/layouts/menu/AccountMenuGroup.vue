@@ -4,19 +4,20 @@ import { computed } from 'vue';
 import MenuItem from './MenuItem.vue';
 import AccountMenuItem from './AccountMenuItem.vue';
 import LogoutMenuItem from './LogoutMenuItem.vue';
-import config from '@/config'; // 폴더를 import 하면 index.js를 가져옴
+import config from '@/config'; // 폴더를 import하면 index.js를 가져옴
 import { useAuthStore } from '@/stores/auth.js';
 
 const auth = useAuthStore();
 const { login, join } = config.accountMenus;
 
 const islogin = computed(() => {
+  console.log(auth.isLogin);
   // true;
   return auth.isLogin;
 });
 
 const username = computed(() => {
-  // return "null";
+  // return 'null';
   return auth.username;
 });
 </script>

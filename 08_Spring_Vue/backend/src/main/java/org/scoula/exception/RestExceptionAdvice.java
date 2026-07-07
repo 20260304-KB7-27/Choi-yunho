@@ -9,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.servlet.NoHandlerFoundException;
 
 import java.util.NoSuchElementException;
 
@@ -19,7 +18,7 @@ import java.util.NoSuchElementException;
 @Order(2)
 public class RestExceptionAdvice {
 
-    // 404 - 리소스 찾을 수 없음
+    // 404 -  리소스 찾을 수 없음.
     @ExceptionHandler(NoSuchElementException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ResponseEntity<ApiResponse<Void>> handle404(NoSuchElementException ex) {
@@ -36,4 +35,6 @@ public class RestExceptionAdvice {
                 .status(HttpStatus.INTERNAL_SERVER_ERROR) // 500 Error -> 개발자잘못
                 .body(ApiResponse.fail(ex.getMessage()));
     }
+
+
 }

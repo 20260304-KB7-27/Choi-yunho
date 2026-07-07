@@ -17,10 +17,12 @@ import java.io.IOException;
 @Log4j2
 public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint {
 
+
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
-        // 인증되지 않은 요청이 보호된 자원에 접근했을 때 발생한 예외를 다루는 핸들러
-        log.info("============= 인증 에러 ================");
+
+        // 인증되지 않은 요청이 보호된 자원에 접근했을때 발생한 예외를 다루는 핸들러
+        log.info("============== 인증 에러 =================");
         JsonResponse.sendError(
                 response,
                 HttpStatus.UNAUTHORIZED,

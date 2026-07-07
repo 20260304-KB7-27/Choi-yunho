@@ -13,26 +13,28 @@ import org.springframework.stereotype.Component;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-// 로그인 요청을 처리하기 위한 필터
+// 로그인요청을 처리하기 위한 필터
 @Component
 public class JwtUsernamePasswordAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
-    public JwtUsernamePasswordAuthenticationFilter(AuthenticationManager authenticationManager,
-                                                   LoginSuccessHandler successHandler,
-                                                   LoginFailureHandler failureHandler) {
+    public JwtUsernamePasswordAuthenticationFilter(
+            AuthenticationManager authenticationManager,
+            LoginSuccessHandler successHandler,
+            LoginFailureHandler failureHandler) {
 
         super(authenticationManager);
-        setFilterProcessesUrl("/api/auth/login"); // POST 로그인 요청이 왔을 때 동작하는 필터
+
+        setFilterProcessesUrl("/api/auth/login"); // POST 로그인 요청이 왔을때 동작하는 필터
 
         setAuthenticationSuccessHandler(successHandler);
         setAuthenticationFailureHandler(failureHandler);
     }
 
-    @Override // 로그인 요청이 왔을 때 처리될 작업을 정의
+    @Override // 로그인 요청이 왔을때 처리될 작업을 정의
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
 
-        // UsernamePasswordAuthenticationTokent 구성
-        // LoginDTO
+        // UsernamePasswordAuthenticationToken 구성
+        // LOGINDTO
         LoginDTO login = LoginDTO.of(request);
 
         // 인증 토큰 생성
@@ -41,7 +43,7 @@ public class JwtUsernamePasswordAuthenticationFilter extends UsernamePasswordAut
                         login.getUsername(), login.getPassword()
                 );
 
-        // AuthenticationManager에게 인증 요청
+        // AuthenticationManger에게 인증요청
         return getAuthenticationManager().authenticate(authenticationToken);
     }
 }

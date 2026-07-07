@@ -11,16 +11,15 @@ import java.util.Date;
 import java.util.List;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class MemberJoinDTO {
-
     private String username;
     private String password;
     private String email;
 
-    private MultipartFile avatar; // -> DB에 저장안하고 파일시스템으로 관리
+    private MultipartFile avatar; // -> db 저장안하고 파일시스템으로 관리
 
 
     public MemberVO toVO() {
@@ -29,6 +28,9 @@ public class MemberJoinDTO {
                 .password(password)
                 .email(email)
                 .build();
-
     }
+
+
+
+
 }

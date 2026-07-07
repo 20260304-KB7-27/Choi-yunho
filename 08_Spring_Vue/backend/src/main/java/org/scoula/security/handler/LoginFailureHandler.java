@@ -11,12 +11,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+// 로그인 실패했을때 동작할 핸들러
 @Component
 public class LoginFailureHandler implements AuthenticationFailureHandler {
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
 
-        // 실패했을 때 실행할 내용
+        // 실패했을때 응답할 내용
         JsonResponse.sendError(
                 response,
                 HttpStatus.UNAUTHORIZED,

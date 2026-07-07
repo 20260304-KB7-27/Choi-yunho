@@ -16,12 +16,14 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     private final UserDetailsMapper mapper;
 
+    // UserDetail 정보를 가져오는 용도
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
         MemberVO member = mapper.get(username); // DB에서 pk로 조회
 
         if (member == null) {
-            throw new UsernameNotFoundException(username + "은(는) 없는 ID 입니다.");
+            throw new UsernameNotFoundException(username + "는 없는 ID 입니다.");
         }
 
         return new CustomUser(member); // Authentication 객체에 저장 (Security Context)

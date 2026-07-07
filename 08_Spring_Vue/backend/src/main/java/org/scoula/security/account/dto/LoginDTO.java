@@ -17,7 +17,8 @@ public class LoginDTO {
     private String username;
     private String password;
 
-    // HTTP 요청에서 LoginDTO 객체로 만드는 팩토리 메소드
+    // HTTP 요청에서 LoginDTO 객체로 만드는 펙토리 메소드
+
     public static LoginDTO of(HttpServletRequest request) {
         ObjectMapper om = new ObjectMapper();
 
@@ -29,4 +30,5 @@ public class LoginDTO {
             throw new BadCredentialsException("username 또는 password가 없습니다.");
         }
     }
+
 }

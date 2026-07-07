@@ -22,6 +22,6 @@ public class BoardVO {
     private Date regDate;
     private Date updateDate;
 
-    // Join 처리하기 위함 (ResultMap)
+    // join 처리 하기 위함 (ResultMap)
     private List<BoardAttachmentVO> attaches;
 }

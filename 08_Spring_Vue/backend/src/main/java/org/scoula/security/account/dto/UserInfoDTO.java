@@ -20,7 +20,7 @@ public class UserInfoDTO {
                 memberVO.getUsername(),
                 memberVO.getEmail(),
                 memberVO.getAuthList().stream()
-                        .map(a -> a.getAuth())// 권한리스트 문자열 변환
+                        .map(a -> a.getAuth()) // 권한리스트 문자열 변환
                         .toList()
         );
     }

@@ -52,6 +52,13 @@ public class SwaggerConfig {
         return new ApiKey("Authorization", "Authorization", "header");
     }
 
+
+    private List<SecurityReference> defaultAuth() {
+        AuthorizationScope authorizationScope = new AuthorizationScope("global", "accessEverything");
+        return List.of(new SecurityReference("Authorization", new AuthorizationScope[]{authorizationScope}));
+    }
+
+    // Swagger에 메소드마다 자물쇠 아이콘 표시
     private SecurityContext securityContext() {
         return SecurityContext.builder()
                 .securityReferences(defaultAuth())
@@ -59,9 +66,4 @@ public class SwaggerConfig {
                 .build();
     }
 
-    // Swagger에 메소드마다 자물쇠 아이콘 표시
-    private List<SecurityReference> defaultAuth() {
-        AuthorizationScope authorizationScope = new AuthorizationScope("global", "accessEverything");
-        return List.of(new SecurityReference("Authorization", new AuthorizationScope[]{authorizationScope}));
-    }
 }

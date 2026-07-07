@@ -19,6 +19,7 @@ class UserDetailsMapperTest {
 
     @Autowired
     private UserDetailsMapper mapper;
+
     @Test
     void get() {
 

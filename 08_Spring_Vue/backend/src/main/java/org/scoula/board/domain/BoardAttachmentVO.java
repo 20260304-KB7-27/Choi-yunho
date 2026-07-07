@@ -36,4 +36,5 @@ public class BoardAttachmentVO {
     public String getFileSize() {
         return UploadFiles.getFormatSize(size);
     }
+
 }

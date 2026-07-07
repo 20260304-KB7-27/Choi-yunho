@@ -51,8 +51,10 @@
 import { reactive, ref } from 'vue';
 import { computed } from 'vue';
 import { useAuthStore } from '@/stores/auth';
-import { useRouter } from 'vue-router';
+import { useRouter, useRoute } from 'vue-router';
 
+// 로그인 페이지 로그인 후 이동할 경로 가져오기 위해(쿼리)
+const cr = useRoute();
 const auth = useAuthStore();
 const router = useRouter();
 
@@ -68,10 +70,19 @@ const disableSubmit = computed(() => !(member.username && member.password));
 const login = async () => {
   try {
     await auth.login(member);
-    router.push('/'); // 홈페이지로 이동하게
+    // router.push('/'); // 홈페이지로 이동하게
+    if (cr.query.next) {
+      // 로그인 후 이동할 페이지가 있으면
+      router.push({ name: cr.query.next });
+    } else {
+      // 일반 로그인이면
+      router.push('/'); // 홈페이지로 이동하게
+    }
   } catch (e) {
     console.log('에러==== ', e);
     error.value = e.response.data; // 에러 메시지 표시
   }
 };
 </script>
+
+<style scoped></style>
