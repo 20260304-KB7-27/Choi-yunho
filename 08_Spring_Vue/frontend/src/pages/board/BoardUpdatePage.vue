@@ -2,6 +2,7 @@
 import { ref, reactive } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import boardApi from "@/api/boardApi";
+import TiptapEditor from "@/components/editor/TiptapEditor.vue";
 
 const cr = useRoute();
 const router = useRouter();
@@ -112,13 +113,7 @@ load();
     <!-- 내용 수정 -->
     <div class="mb-3 mt-3">
       <label for="content" class="form-label">내용</label>
-      <textarea
-        class="form-control"
-        placeholder="내용"
-        id="content"
-        v-model="article.content"
-        rows="10"
-      ></textarea>
+      <TiptapEditor id="content" v-model="article.content" />
     </div>
 
     <!-- 버튼 영역 -->

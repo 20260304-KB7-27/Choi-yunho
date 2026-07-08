@@ -72,7 +72,7 @@ load();
   </div>
 
   <!-- 게시글 내용 -->
-  <div class="content">{{ article.content }}</div>
+  <div class="content" v-html="article.content"></div>
 
   <!-- 버튼 영역 -->
   <div class="my-5">
@@ -100,5 +100,14 @@ load();
 
 .content {
   white-space: pre-line; /* 줄바꿈 문자를 실제 줄바꿈으로 표시 */
+}
+
+.content :deep(ul),
+.content :deep(ol) {
+  padding-left: 1.5rem;
+}
+
+.content :deep(img) {
+  max-width: 100%;
 }
 </style>

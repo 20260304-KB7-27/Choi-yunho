@@ -1,5 +1,6 @@
 <script setup>
 import boardApi from '@/api/boardApi';
+import TiptapEditor from '@/components/editor/TiptapEditor.vue';
 
 import { computed, reactive, ref } from 'vue';
 import { useAuthStore } from '@/stores/auth';
@@ -14,6 +15,7 @@ const files = ref(null);
 const article = reactive({
   writer: auth.username,
   title: '',
+  content: '',
   files: null,
 });
 
@@ -60,13 +62,7 @@ const submit = async () => {
 
     <div class="mb-3 mt-3">
       <label for="content" class="form-label"> 내용 </label>
-      <textarea
-        class="form-control"
-        placeholder="내용"
-        id="content"
-        v-model="article.content"
-        rows="10"
-      ></textarea>
+      <TiptapEditor id="content" v-model="article.content" />
     </div>
     <div class="my-5 text-center">
       <button
